@@ -24,14 +24,19 @@ function process(message, callback) {
       stageName: codePipelineMessage.approval.stageName,
       token: codePipelineMessage.approval.token
     };
-    CODEPIPELINE.putApprovalResult(params, function(err, data) {
-      if (err){
-        console.log(err, err.stack);   
-      } else {
-        console.log(data);
-      }
-    });
-    console.log("Processed Successfully");
+    try{
+        CODEPIPELINE.putApprovalResult(params, function(err, data) {
+          if (err){
+            console.log(err, err.stack);   
+          } else {
+            console.log(data);
+          }
+        });
+        console.log("CodePipeline Approval Successful.");
+    }catch(err){
+        console.log("CodePipeline Approval Failed.");
+        console.error(err, err.stack);
+    }
 
     // delete message
     const sqsParams = {
