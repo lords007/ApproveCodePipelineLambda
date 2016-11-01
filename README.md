@@ -8,8 +8,14 @@ index.js is a Lambda function to be triggered by *CloudWatch Scheduled Event*. T
 
 You can achieve time-based autoapproval by following these two steps:
 
- CodePipeline -> Manual Approval -> SNS -> SQS
- CloudWatch Scheduled Event -> Lambda -> Poll SQS -> Auto Approve CodePipeline
+**Step 1:**
+
+   CodePipeline -> Manual Approval -> SNS -> SQS
+
+**Step 2:**
+
+   CloudWatch Scheduled Event -> Lambda -> Poll SQS -> Auto Approve CodePipeline
+
 
 ## Instructions
 
